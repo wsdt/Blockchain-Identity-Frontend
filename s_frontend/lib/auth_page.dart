@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:s_frontend/introduction/introduction.interfaces.dart';
 import 'package:s_frontend/introduction/introduction_pages_parent.dart';
+import 'package:s_frontend/seed_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthPage extends StatelessWidget {
-
   AuthPage({Key key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
-    this._whatToShow(context);
+    this._evaluateIntroduction(context);
+    // evaluteRegister is called in evaluteIntroduction after finishing
 
     return Scaffold(
       body: Center(
@@ -34,30 +34,59 @@ class AuthPage extends StatelessWidget {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Auth here',
-            ),
+            new Text("Auth fingerprint login, Keychain")
           ],
         ),
       ), // center, This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
+
+  /// Returns list of widgets. Either widgets for registering a new user (seed buttons)
+  /// or the login via finger print (keychain)
+  void _evaluateRegister(BuildContext context) async {
+    const bool isUserRegistered = false; // TODO: access keychain
+
+    // Redirect to registration views if not registered
+    if (!isUserRegistered) {
+      this._startRegistrationPages(context);
+    }
+  }
+
   /// This method determines what views will be shown
   /// When information pages have been shown already the
   /// app goes to the main page.
-  Future<void> _whatToShow(BuildContext context) async {
-    debugPrint("main:_whatToShow: Trying to determine whether introduction has been shown.");
+  Future<void> _evaluateIntroduction(BuildContext context) async {
+    debugPrint(
+        "main:_whatToShow: Trying to determine whether introduction has been shown.");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool wasShown = prefs.getBool(INTRODUCTION_SHOWN) ?? false; // ?? means if null
     if (!wasShown) {
-      startIntroductionPages(context);
+      _startIntroductionPages(context);
+    } else {
+      // If introduction already shown evaluate whether user is registered
+      this._evaluateRegister(context);
     }
   }
 
   /// Go to info page (start page when not read introduction)
-  Future startIntroductionPages(BuildContext context) async {
+  void _startIntroductionPages(BuildContext context) async {
     debugPrint("main:startIntroductionPages: Started introduction views.");
-    Navigator.push(context, new MaterialPageRoute(builder: (context) => new IntroductionPagesParent()));
+
+    Navigator.pushReplacement(
+        context,
+        new MaterialPageRoute(
+            builder: (context) => new IntroductionPagesParent()));
   }
+
+  /// Go to info page (start page when not read introduction)
+  void _startRegistrationPages(BuildContext context) async {
+    debugPrint("main:startRegistrationPages: Started registration views.");
+
+    Navigator.pushReplacement(
+        context,
+        new MaterialPageRoute(
+            builder: (context) => new SeedPage()));
+  }
+
 }
