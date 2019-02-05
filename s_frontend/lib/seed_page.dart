@@ -2,11 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:s_frontend/introduction/introduction.interfaces.dart';
 import 'package:s_frontend/introduction/introduction_pages_parent.dart';
+import 'package:s_frontend/registration/registration_data_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SeedPage extends StatelessWidget {
 
   SeedPage({Key key}) : super(key: key);
+
+  _registrationInput(BuildContext context) {
+    Navigator.pushReplacement(
+        context,
+        new MaterialPageRoute(
+            builder: (context) => new RegistrationInput()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +44,7 @@ class SeedPage extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 elevation: 4.0,
                 splashColor: Colors.blueGrey,
-                onPressed: null),
+                onPressed: () => _registrationInput(context)),
             RaisedButton(
                 child: const Text('Importiere Seed'),
                 color: Theme.of(context).accentColor,
