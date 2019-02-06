@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_frontend/introduction/introduction.interfaces.dart';
-import 'package:s_frontend/introduction/introduction_pages_parent.dart';
-import 'package:s_frontend/registration/registration_data_input.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:s_frontend/views/registration/registration_data_input.dart';
 
 class SeedPage extends StatelessWidget {
 

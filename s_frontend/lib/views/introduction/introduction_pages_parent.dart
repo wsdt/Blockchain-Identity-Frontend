@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_frontend/introduction/introduction_page_1.dart';
-import 'package:s_frontend/introduction/introduction_page_2.dart';
-import 'package:s_frontend/introduction/introduction_page_3.dart';
+import 'package:s_frontend/views/introduction/introduction_page_1.dart';
+import 'package:s_frontend/views/introduction/introduction_page_2.dart';
+import 'package:s_frontend/views/introduction/introduction_page_3.dart';
 
 class IntroductionPagesParent extends PageView {
   static final customController = PageController(

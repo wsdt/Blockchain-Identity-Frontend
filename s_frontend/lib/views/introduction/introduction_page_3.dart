@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_frontend/auth_page.dart';
-import 'package:s_frontend/introduction/introduction.interfaces.dart';
+import 'package:s_frontend/views/auth_page.dart';
+import 'package:s_frontend/views/introduction/introduction.interfaces.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class IntroductionPage3 extends StatelessWidget {

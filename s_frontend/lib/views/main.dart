@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:s_frontend/auth_page.dart';
+import 'package:s_frontend/views/auth_page.dart';
 
 void main() => runApp(App());
 
