@@ -4,12 +4,16 @@ import 'package:s_frontend/views/introduction/introduction.interfaces.dart';
 import 'package:s_frontend/views/introduction/introduction_pages_parent.dart';
 import 'package:s_frontend/views/seed_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:local_auth/local_auth.dart';
+import 'main.constants.dart';
 
 class AuthPage extends StatelessWidget {
   AuthPage({Key key}) : super(key: key);
+  var localAuth = new LocalAuthentication(); // https://pub.dartlang.org/packages/local_auth
 
   @override
   Widget build(BuildContext context) {
+    this.appAuth();
     this._evaluateIntroduction(context);
     // evaluteRegister is called in evaluteIntroduction after finishing
 
@@ -89,4 +93,40 @@ class AuthPage extends StatelessWidget {
             builder: (context) => new SeedPage()));
   }
 
+
+  void appAuth() async {
+    bool canCheckBiometrics = await localAuth.canCheckBiometrics;
+
+    if (canCheckBiometrics) {
+      /*List<BiometricType> availableBiometrics =
+          await localAuth.getAvailableBiometrics();*/
+
+      bool didAuthenticate;
+      try {
+        didAuthenticate = await localAuth.authenticateWithBiometrics(
+            localizedReason: AUTH_REASON, stickyAuth: true);
+      } catch (e) {
+        print("appAuth: Could not use biometrics: "+e.toString());
+        // TODO: show password input
+      }
+
+      if (didAuthenticate) {
+        print("AUTH SUCCESS");
+      } else {
+        print("AUTH FAILED");
+      }
+
+      /*if (Platform.isIOS) {
+      if (availableBiometrics.contains(BiometricType.fingerprint)) {
+        // Touch id
+        didAuthenticate = await localAuth.authenticateWithBiometrics(localizedReason: AUTH_REASON);
+      } else if (availableBiometrics.contains(BiometricType.iris)) {
+        // Iris
+        didAuthenticate = await localAuth.authenticateWithBiometrics(localizedReason: null)
+      } else if (availableBiometrics.contains(BiometricType.face)) {
+        // Face id
+      }
+      }*/
+    }
+  }
 }

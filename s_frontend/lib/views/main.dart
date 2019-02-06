@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:s_frontend/views/auth_page.dart';
 
@@ -20,4 +22,3 @@ class App extends StatelessWidget {
   }
 
 }
-
