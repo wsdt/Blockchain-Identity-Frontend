@@ -13,10 +13,7 @@ class IntroductionPage3 extends StatelessWidget {
   _saveReadStatus(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(INTRODUCTION_SHOWN, true);
-    Navigator.pushReplacement(
-        context,
-        new MaterialPageRoute(
-            builder: (context) => new AuthPage()));
+    AuthPage.startRegistrationPages(context);
   }
 
   @override
