@@ -42,16 +42,10 @@ class IntroductionPage3 extends StatelessWidget {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Page 3',
-            ),
-            RaisedButton(
+            CupertinoButton(
                 child: const Text('Verstanden'),
-                color: Theme.of(context).accentColor,
-                elevation: 4.0,
-                splashColor: Colors.blueGrey,
                 onPressed: () => this._saveReadStatus(context)
-            )
+            ),
           ],
         ),
       ), // center, This trailing comma makes auto-formatting nicer for build methods.

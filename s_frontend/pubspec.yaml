@@ -38,6 +38,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - assets/symbols/symbol_email.png
+    - assets/symbols/symbol_handysignature.png
+    - assets/symbols/symbol_oauth.png
+    - assets/symbols/symbol_sms.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
