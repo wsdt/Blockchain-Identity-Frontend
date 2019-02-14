@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:s_frontend/controllers/oauth/facebook/facebook.dart';
+import 'package:s_frontend/controllers/oauth/linkedin/linkedin.dart';
 
 class VerificationOAuth extends StatelessWidget {
   VerificationOAuth({Key key}) : super(key: key);
@@ -8,7 +10,12 @@ class VerificationOAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Text("Verification of OAuth")
+        child: ListView(
+          children: <Widget>[
+            OAuth2Facebook(),
+            OAuth2Linkedin(),
+          ],
+        ),
       ),
     );
   }
