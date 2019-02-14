@@ -1,5 +1,5 @@
 
-
+import 'package:simple_auth_flutter/simple_auth_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:s_frontend/views/auth_page.dart';
 
@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("main:build: Started main application.");
+    SimpleAuthFlutter.init(context); // for oauth
 
     return MaterialApp(
       theme: ThemeData(

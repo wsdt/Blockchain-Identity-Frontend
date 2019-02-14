@@ -5,11 +5,10 @@ import 'package:local_auth/local_auth.dart';
 import 'main.constants.dart';
 
 class AuthPageState extends State<AuthPage> {
-  var localAuth =
-      new LocalAuthentication(); // https://pub.dartlang.org/packages/local_auth
+  var localAuth = new LocalAuthentication(); // https://pub.dartlang.org/packages/local_auth
   bool _obscurePwd = true;
   bool _isAuthenticated = false;
-  bool _canCheckBiometrics; // set to null/undefined for loading op
+  bool _canCheckBiometrics = true; // todo: set to null/undefined for loading op (just remove true, when biometrics implemented)
 
   void _togglePwdVisibility() {
     setState(() {
@@ -112,8 +111,10 @@ class AuthPageState extends State<AuthPage> {
         ));
   }
 
+
   void _showNotImplementedWarning(BuildContext context) {
     Scaffold.of(context)
         .showSnackBar(new SnackBar(content: new Text("Not implemented")));
+    _getAuthenticated(context); // AUTHENTICATE AUTOMATICALLY IN THE MEANTIME
   }
 }

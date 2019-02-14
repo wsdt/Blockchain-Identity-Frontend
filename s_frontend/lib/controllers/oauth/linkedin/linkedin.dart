@@ -1,32 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_login/linkedin_login.dart';
+import 'package:s_frontend/controllers/oauth/oauthParent.dart';
+import 'package:s_frontend/controllers/oauth/oauth_constants.dart';
+import 'package:simple_auth/simple_auth.dart' as simpleAuth;
 
-class OAuth2Linkedin extends StatelessWidget {
-  //static const REDIRECT_URL = "intent://codeing.io/oauth2/linkedin#Intent;scheme=http;package=io.flutter.app.FlutterApplication;category=android.intent.category.BROWSABLE;component=io.flutter.app.FlutterApplication.MainActivity;action=android.intent.action.VIEW;end";
-  static const REDIRECT_URL = "https://codeing.io";
-  static const CLIENT_ID = "867keehgjcqcws";
-  static const CLIENT_SECRET = "HtHpCG3CBSSEuyfT";
+class OAuth2Linkedin extends OAuth2Parent {
+  final simpleAuth.LinkedInApi linkedInApi = simpleAuth.LinkedInApi(
+    LINKEDIN_LIB_ID,
+    LINKEDIN_CLIENT_ID,
+    LINKEDIN_CLIENT_SECRET,
+    LINKEDIN_REDIRECT_URI
+  );
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
       child: Text("Login with LinkedIn"),
-      onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => LinkedInUserWidget(
-                      redirectUrl: REDIRECT_URL,
-                      clientId: CLIENT_ID,
-                      clientSecret: CLIENT_SECRET,
-                      onGetUserProfile: (LinkedInUserModel linkedInUser) {
-                        print('Access token ${linkedInUser.token.accessToken}');
-
-                        Navigator.pop(context);
-                      },
-                    )));
-      },
+      onPressed: () => this.login(linkedInApi, context),
     );
   }
 }
