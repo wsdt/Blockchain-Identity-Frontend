@@ -3,7 +3,9 @@
 // GOOGLE +++++++++++++++++++++++++++++++++
 const String GOOGLE_LIB_ID = "google";
 const String GOOGLE_CLIENT_ID = "589912983695-6nigddgkn7qr21s8jj024fctnmomi4lu.apps.googleusercontent.com";
+//web: const String GOOGLE_CLIENT_ID = "589912983695-oimjjfvvqpo40mpvmnn082dkgsmjor3c.apps.googleusercontent.com";
 const String GOOGLE_CLIENT_SECRET = "8CsuqrVk8yrLwu8ymbco3Xs5";
+//web: const String GOOGLE_CLIENT_SECRET = "pzyjjsuT1vJOxPhHL-B3Qr91";
 const String GOOGLE_REDIRECT_URI = "http://localhost:8080";
 const List<String> GOOGLE_PERMISSIONS = [
   "https://www.googleapis.com/auth/userinfo.profile",
