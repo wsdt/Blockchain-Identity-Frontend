@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:s_frontend/views/main.constants.dart';
 
 class VerificationEmail extends StatefulWidget {
   VerificationEmail({Key key}) : super(key: key);
@@ -102,8 +104,15 @@ class VerificationEmailState extends State<VerificationEmail> {
             )));
   }
 
-  void informServerToSendMail() {
+  void informServerToSendMail() async {
     // TODO
+    // If multiple requests use Client instead (packages/http)
     print("Email: "+emailController.text);
+    http.Response res = await http.post(BACKEND_URI, body: {
+      "email":emailController.text
+    });
+
+    print("Response status: ${res.statusCode}");
+    print("Response body: ${res.body}");
   }
 }
