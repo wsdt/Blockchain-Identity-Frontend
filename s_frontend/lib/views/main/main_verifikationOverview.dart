@@ -29,12 +29,11 @@ class MainVerificationOverview extends StatelessWidget {
                   }));
                 },
                 child: Tooltip(
-                  message: "Verifiziere dich mit deiner E-Mail Adresse.",
+                  message: "Verifikation per E-Mail",
                   child: Card(
                     child: Padding(
                         padding: EdgeInsets.all(25.0),
-                        child: Image.asset("assets/symbols/symbol_email.png",
-                            color: Colors.indigo)),
+                        child: Image.asset("assets/symbols/symbol_email.png")),
                   ),
                 )),
             InkWell(
@@ -53,10 +52,9 @@ class MainVerificationOverview extends StatelessWidget {
                     child: Padding(
                         padding: EdgeInsets.all(25.0),
                         child: Image.asset(
-                            "assets/symbols/symbol_handysignature.png",
-                            color: Colors.indigo)),
+                            "assets/symbols/symbol_handysignature.png")),
                   ),
-                  message: "Verifiziere dich mit Hilfe der Handysignatur.",
+                  message: "Verifikation per Handysignatur",
                 )),
             InkWell(
               onTap: () {
@@ -73,11 +71,10 @@ class MainVerificationOverview extends StatelessWidget {
                 child: Card(
                   child: Padding(
                       padding: EdgeInsets.all(25.0),
-                      child: Image.asset("assets/symbols/symbol_oauth.png",
-                          color: Colors.indigo)),
+                      child: Image.asset("assets/symbols/symbol_oauth.png")),
                 ),
                 message:
-                    "Nutze externe Services (z.B. Facebook, Github, ...), um dich zu verifizieren.",
+                    "Verifikation per OAuth 2.0",
               ),
             ),
             InkWell(
@@ -94,9 +91,8 @@ class MainVerificationOverview extends StatelessWidget {
               child: Tooltip(child:Card(
                 child: Padding(
                     padding: EdgeInsets.all(25.0),
-                    child: Image.asset("assets/symbols/symbol_sms.png",
-                        color: Colors.indigo)),
-              ),message: "Verifiziere deine Identität mit deiner Telefonnummer.",),
+                    child: Image.asset("assets/symbols/symbol_sms.png")),
+              ),message: "Verifikation per SMS",),
             ),
           ]), // center, This trailing comma makes auto-formatting nicer for build methods.
     );
