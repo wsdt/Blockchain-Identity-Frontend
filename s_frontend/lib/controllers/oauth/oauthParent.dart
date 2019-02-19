@@ -43,6 +43,7 @@ abstract class OAuth2Parent extends StatelessWidget {
     try {
       initiateRedirectServer();
       OAuthAccount success = await api.authenticate();
+
       showMessage("Account now connected to VID-Card.", context);
       print("oauthParent:login: Logged in successfully: $success / "+success.toString());
     } catch (e, s) {
