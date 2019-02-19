@@ -49,7 +49,6 @@ abstract class OAuth2Parent extends StatelessWidget {
     try {
       initiateRedirectServer();
       OAuthAccount success = await api.authenticate();
-
       sendOAuthTokenToServer(success, context);
     } catch (e, s) {
       showError(
