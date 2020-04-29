@@ -4,3 +4,6 @@ Left startup in February 2019 to work on [Wavect](https://github.com/wsdt/Wavect
 
 ## VID-Card / Code|ng
 Basically creating a decentralized identity for organizations and consumers.
+
+
+**Please note: That this repo was thought as a first and simple prototype!**
